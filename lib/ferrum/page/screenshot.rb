@@ -222,7 +222,9 @@ module Ferrum
         if scale != 1
           unless clip
             width, height = viewport_size
-            clip = { x: 0, y: 0, width: width, height: height }
+            x,y = evaluate("[window.pageXOffset, window.pageYOffset]")
+
+            clip = { x: x, y: y, width: width, height: height }
           end
 
           clip.merge!(scale: scale)
